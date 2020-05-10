@@ -1,0 +1,12 @@
+numpy
+matplotlib
+tensorflow
+pillow
+scipy
+opencv
+flask
+flask-restful
+flask-jsonpify
+flask-httpauth
+flask-sqlalchemy
+
