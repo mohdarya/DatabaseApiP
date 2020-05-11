@@ -64,3 +64,6 @@ capable of handling image recognition requests
 #USAGE: GET a number of a card in the users collection 
 /Users/<user_id>/Collections/<card_id>/Count
 ```
+
+# How to use 
+The Port number that the API needs to be run on need to be set in the code as well as the usernames and passwords that will be used
