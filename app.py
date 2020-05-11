@@ -22,11 +22,11 @@ user = ""
 app.config["JSON_SORT_KEYS"] = False
 #change usernames if needed
 phone_username = "admin"
-game_username = "game"
+username_2 = "user"
 #change the password of the users
 USER_DATA = {
     phone_username:"password" ,
-    game_username: "password"
+    username_2: "password"
 }
 cardCount = 1
 
@@ -272,12 +272,12 @@ class Deck(Resource):
     def get(self, user_id=None, deck_id=None, deck_name=None, card_id=None):
         global user
         if "Cards" in request.endpoint:
-            #getting the cars name and number in the deck using the deck id for the game
+            #getting the cars name and number in the deck using the deck id
             if "Names" in request.endpoint:
                 conn = db_connect.connect()
-                if user == game_username :
+                if user == username_2 :
                     query = conn.execute(
-                        "select C.GameCardName, D.Count from DeckCardList D join Card C on D.CardID = C.CardID where D.DeckID=?",
+                        "select C.GCardName, D.Count from DeckCardList D join Card C on D.CardID = C.CardID where D.DeckID=?",
                         deck_id)
                     result = {
                         "Data": []
@@ -313,9 +313,9 @@ class Deck(Resource):
                 query = conn.execute(
                     "select * from DeckCardList D join Card C on D.CardID = C.CardID where D.DeckID=?",
                     deck_id)
-                #if the game is asking for the information it adds a data header and adds a numbering for each card starting from 0
+                # the information it adds a data header and adds a numbering for each card starting from 0
                 #this is done for easier processing
-                if user == game_username :
+                if user == username_2 :
                     result = {
                         "Data": []
                     }
@@ -338,8 +338,8 @@ class Deck(Resource):
                 conn = db_connect.connect()
                 query = conn.execute("select DeckName from Deck where UserID=?",
                                      user_id)
-                #same as before if game is asking for it then it just puts it in a data field and numbers it
-                if user == game_username :
+                #it then it just puts it in a data field and numbers it
+                if user == username_2 :
                     result = {
                         "Data": []
                     }
@@ -362,7 +362,7 @@ class Deck(Resource):
                 query = conn.execute("select DeckID from Deck where DeckName=? and UserID=?",
                                      deck_name, user_id)
 
-                if user == game_username :
+                if user == username_2 :
                     result = {
                         "Data": []
                     }
@@ -388,7 +388,7 @@ class Deck(Resource):
             conn = db_connect.connect()
             query = conn.execute("select DeckName from Deck where DeckID=?",
                                  deck_id)
-            if user == game_username :
+            if user == username_2 :
                 result = {
                     "Data": []
                 }
@@ -425,8 +425,8 @@ class Deck(Resource):
             if card_id is None:
                 conn = db_connect.connect()
 
-                if user == game_username :
-                    if user == game_username :
+                if user == username_2 :
+                    if user == username_2 :
                         query = conn.execute("select DeckID,DeckName,DeckCoverArt from Deck where UserID=?", user_id)
                     result = {
                         "Data": []
