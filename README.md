@@ -67,3 +67,5 @@ capable of handling image recognition requests
 
 # How to use 
 The Port number that the API needs to be run on need to be set in the code as well as the usernames and passwords that will be used
+
+The IR model should be copied into the model usage subfolder and a directories for each class the IR model is recognising in the getcards/crads folder 
